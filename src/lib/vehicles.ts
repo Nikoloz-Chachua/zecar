@@ -32,7 +32,7 @@ export function sortVehicles(items: Vehicle[], sort: VehicleSort): Vehicle[] {
 export const formatCurrency = (value: number, currency: Currency) =>
   new Intl.NumberFormat("en-US", { style: "currency", currency, maximumFractionDigits: 0 }).format(value);
 
-export const formatMileage = (mileage: number) => `${new Intl.NumberFormat("en-US").format(mileage)} mi`;
+export const formatMileage = (mileage: number, locale = "en", unit = "mi") => `${new Intl.NumberFormat(locale === "ka" ? "ka-GE" : locale === "ru" ? "ru-RU" : "en-US").format(mileage)} ${unit}`;
 export const getVehicleBySlug = (slug: string) => vehicles.find((vehicle) => vehicle.slug === slug);
 export const getSimilarVehicles = (vehicle: Vehicle, limit = 3) => {
   const candidates = vehicles.filter((item) => item.id !== vehicle.id);

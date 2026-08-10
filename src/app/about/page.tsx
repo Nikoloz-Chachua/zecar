@@ -1,9 +1,3 @@
-import type { Metadata } from "next";
-import Image from "next/image";
-import Link from "next/link";
-import { Arrow } from "@/components/icons";
-import { SectionHeading } from "@/components/section-heading";
-import { vehicles } from "@/data/vehicles";
-
-export const metadata: Metadata = { title: "About", description: "A straightforward approach to presenting and discussing pre-owned cars.", alternates: { canonical: "/about" } };
-export default function AboutPage() { return <><section className="page-intro shell narrow"><p className="eyebrow">About ZECAR</p><h1>A showroom built around clarity.</h1><p>We believe choosing a car should begin with good information and a straightforward conversation.</p></section><section className="about-image"><Image src={vehicles[1].galleryImages[1]} alt="Modern premium vehicle presented in a clean setting" fill sizes="100vw" priority /></section><section className="section shell about-copy"><SectionHeading eyebrow="Our approach" title="Considered, useful, direct." /><div><p>ZECAR is a demonstration of a modern independent automotive showroom. It is designed to help drivers browse a focused selection, understand each vehicle, and contact a real person without being pushed through an online purchase funnel.</p><p>Every listing follows the same clear structure: multiple images, practical specifications, visible status, and contact actions tied to the exact car. The sample vehicles currently shown are replaceable content and do not represent live stock.</p></div></section><section className="values shell">{[["01", "Present with care", "Photography and details should let each car speak for itself."], ["02", "Say what matters", "Useful specifications are more valuable than inflated claims."], ["03", "Keep it human", "Questions deserve a direct answer by phone, message, or email."]].map(([n,t,c]) => <div key={n}><span>{n}</span><h2>{t}</h2><p>{c}</p></div>)}</section><section className="about-cta shell"><h2>See what’s currently in the showroom.</h2><Link className="button primary" href="/cars">Browse cars <Arrow className="icon" /></Link></section></>; }
+import type { Metadata } from "next"; import { AboutView } from "@/components/localized-pages";
+export const metadata:Metadata={title:"ჩვენ შესახებ",description:"ZECAR-ის მკაფიო და პირდაპირი მიდგომა მეორადი ავტომობილების წარმოდგენისა და განხილვისადმი.",alternates:{canonical:"/about"}};
+export default function AboutPage(){return <AboutView/>}

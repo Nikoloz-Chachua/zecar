@@ -1,7 +1,3 @@
-import type { Metadata } from "next";
-import { ContactForm } from "@/components/contact-form";
-import { Message, Phone } from "@/components/icons";
-import { dealership } from "@/data/dealership";
-
-export const metadata: Metadata = { title: "Contact", description: "Call, WhatsApp, email, or visit the ZECAR showroom.", alternates: { canonical: "/contact" } };
-export default function ContactPage() { return <><section className="page-intro shell narrow"><p className="eyebrow">Contact</p><h1>Let’s talk cars.</h1><p>Ask about a vehicle, request more detail, or get in touch before visiting the showroom.</p></section><section className="shell contact-layout"><div className="contact-details"><div><p className="eyebrow">Call or message</p><a className="contact-line" href={`tel:${dealership.phoneHref}`}><Phone className="icon" />{dealership.phone}</a><a className="contact-line" href={`https://wa.me/${dealership.whatsapp.replace(/\D/g, "")}`} target="_blank" rel="noreferrer"><Message className="icon" />WhatsApp</a><a href={`mailto:${dealership.email}`}>{dealership.email}</a></div><div><p className="eyebrow">Showroom</p><p>{dealership.address}</p><p className="placeholder-note">Replace this placeholder address before launch.</p></div><div><p className="eyebrow">Opening hours</p>{dealership.hours.map((h) => <p key={h}>{h}</p>)}</div></div><div><h2>Send an inquiry</h2><p>Complete the form and your email app will open with the message ready for your review.</p><ContactForm /></div></section></>; }
+import type { Metadata } from "next"; import { ContactView } from "@/components/localized-pages";
+export const metadata:Metadata={title:"კონტაქტი",description:"დაურეკეთ, მოგვწერეთ WhatsApp-ით ან ელფოსტით, ან ეწვიეთ ZECAR-ის შოურუმს.",alternates:{canonical:"/contact"}};
+export default function ContactPage(){return <ContactView/>}

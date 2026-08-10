@@ -31,6 +31,12 @@ Sample photography is loaded from `images.unsplash.com` through a restricted Nex
 
 WhatsApp links include the exact vehicle title and canonical listing URL. Forms intentionally use a transparent `mailto:` flow: submitting opens the visitor’s configured email app with a prepared message, and nothing is claimed as delivered. Replace this with a validated server-side form endpoint only when real backend and email credentials are available.
 
+## Localization
+
+Georgian (`ka`) is the server-rendered default. Russian (`ru`) and English (`en`) can be selected from the compact header control; the choice is stored under `zecar-locale` in `localStorage` and never inferred from the browser language. Changing language updates the current view without navigation, so inventory filters and gallery state are preserved.
+
+UI dictionaries and localized vehicle descriptions/features live in `src/lib/i18n.ts`. Keep the `ka`, `ru`, and `en` dictionaries structurally identical, add localized content for every vehicle ID, and keep canonical enum values in `src/data/vehicles.ts` unchanged. Run `npm test -- --run` after any copy or inventory update; the localization contract checks dictionary parity, vehicle coverage, inquiry output, and enum coverage.
+
 ## Future CMS migration
 
 The typed data boundary makes a CMS migration straightforward: replace exports from `src/data/vehicles.ts` and `src/data/dealership.ts` with validated server-side fetchers while keeping the `Vehicle` contract stable. Recommended follow-up work includes schema validation, preview support, image asset validation, availability synchronization, caching/revalidation, and a real inquiry endpoint with spam protection and consent handling.
