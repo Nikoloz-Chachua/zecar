@@ -25,7 +25,7 @@ All inventory lives in `src/data/vehicles.ts` and follows the typed model in `sr
 
 ## Images
 
-The supplied galleries for zec-001 through zec-004 are local under `public/vehicles/` and use root-relative URLs. The supplied brand mark is `public/brand/zecar-mark.png`; app icons are `src/app/icon.png` and `src/app/apple-icon.png`. The two untouched demo listings still use `images.unsplash.com` through the restricted Next Image `remotePatterns` rule in `next.config.ts`. Cards and galleries provide fixed aspect ratios and neutral loading/failure backgrounds, but a production CMS should validate image availability during publishing.
+The supplied galleries for zec-001 through zec-004 are local under `public/vehicles/` and use root-relative URLs. The supplied brand mark is `public/brand/zecar-mark.png`; app icons are `src/app/icon.png` and `src/app/apple-icon.png`. Cards and galleries provide fixed aspect ratios and neutral loading/failure backgrounds, but a production CMS should validate image availability during publishing.
 
 ## Inquiry behavior
 

@@ -1,9 +1,5 @@
 import type { Vehicle } from "@/types/vehicle";
 
-// Replaceable sample inventory for demonstration. None of these listings represent real stock.
-const img = (id: string, width = 1800) =>
-  `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${width}&q=85`;
-
 export const vehicles: Vehicle[] = [
   {
     id: "zec-001", slug: "chevrolet-trailblazer-rs", make: "Chevrolet", model: "Trailblazer RS", year: null,
@@ -49,27 +45,5 @@ export const vehicles: Vehicle[] = [
     features: ["Contact us to confirm this vehicle’s equipment and specifications."],
     coverImage: "/vehicles/kia-soul/cover.webp",
     galleryImages: ["/vehicles/kia-soul/cover.webp", "/vehicles/kia-soul/front.webp", "/vehicles/kia-soul/rear.webp"],
-  },
-  {
-    id: "zec-005", slug: "2023-audi-e-tron-gt", make: "Audi", model: "e-tron GT", year: 2023,
-    price: 89900, currency: "USD", mileage: 9800, fuelType: "Electric", transmission: "Automatic",
-    engine: "Dual electric motors", bodyType: "Sedan", drivetrain: "AWD", exteriorColor: "Daytona Grey",
-    interiorColor: "Black Dinamica", condition: "Pre-owned", availabilityStatus: "Available", featured: false,
-    createdDate: "2026-07-23", location: "ZECAR Main Showroom",
-    description: "A low-mileage electric grand tourer with a subtle exterior and a highly resolved cabin. Fast charging and dual-motor all-wheel drive make it as usable as it is distinctive.",
-    features: ["Adaptive air suspension", "Matrix LED headlights", "Bang & Olufsen audio", "Tour assistance", "360° camera", "Heated sport seats"],
-    coverImage: img("1606664515524-ed2f786a0bd6"),
-    galleryImages: [img("1606664515524-ed2f786a0bd6"), img("1619767886558-efdc259cde1a"), img("1617788138017-80ad40651399"), img("1593941707882-a5bba14938c7")],
-  },
-  {
-    id: "zec-006", slug: "2022-land-rover-defender-110", make: "Land Rover", model: "Defender 110", year: 2022,
-    price: 73900, currency: "USD", mileage: 22100, fuelType: "Diesel", transmission: "Automatic",
-    engine: "3.0L turbo diesel inline-six", bodyType: "SUV", drivetrain: "AWD", exteriorColor: "Pangea Green",
-    interiorColor: "Acorn grained leather", condition: "Pre-owned", availabilityStatus: "Recently Sold", featured: false,
-    createdDate: "2026-06-18", location: "ZECAR Main Showroom",
-    description: "A versatile long-wheelbase Defender in a natural, understated color combination. The cabin is configured for everyday utility while retaining the comfort expected on longer journeys.",
-    features: ["Air suspension", "Terrain Response 2", "Meridian audio", "ClearSight mirror", "Tow package", "Heated front seats"],
-    coverImage: img("1533473359331-0135ef1b58bf"),
-    galleryImages: [img("1533473359331-0135ef1b58bf"), img("1606664515524-ed2f786a0bd6"), img("1500530855697-b586d89ba3ee"), img("1525609004556-c46c7d6cf023")],
   },
 ];
