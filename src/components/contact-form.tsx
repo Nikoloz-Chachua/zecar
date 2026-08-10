@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { Vehicle } from "@/types/vehicle";
+import { getVehicleTitle } from "@/lib/vehicles";
 import { buildMailtoUrl } from "@/lib/inquiry";
 import { useLocale } from "./locale-provider";
 import { Arrow } from "./icons";
@@ -15,7 +16,7 @@ export function ContactForm({ vehicle }: { vehicle?: Vehicle }) {
   }}>
     <div className="form-row"><label><span>{t.form.name}</span><input name="name" autoComplete="name" required /></label><label><span>{t.form.email}</span><input name="email" type="email" autoComplete="email" required /></label></div>
     <label><span>{t.form.phone} <small>({t.form.optional})</small></span><input name="phone" type="tel" autoComplete="tel" /></label>
-    <label><span>{t.form.message}</span><textarea name="message" rows={5} required key={locale} defaultValue={vehicle ? t.form.defaultMessage.replace("{vehicle}", `${vehicle.year} ${vehicle.make} ${vehicle.model}`) : ""} /></label>
+    <label><span>{t.form.message}</span><textarea name="message" rows={5} required key={locale} defaultValue={vehicle ? t.form.defaultMessage.replace("{vehicle}", getVehicleTitle(vehicle)) : ""} /></label>
     <button className="button primary" type="submit">{t.form.submit} <Arrow className="icon" /></button>
     <p className="form-note" aria-live="polite">{note ? t.form.opened : t.form.prepared}</p>
   </form>;

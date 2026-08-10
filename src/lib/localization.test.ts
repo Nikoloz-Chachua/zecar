@@ -25,7 +25,7 @@ describe("localization contract", () => {
     expect(resolveLocalizedTitle("/cars", "ru")).toBe("Автомобили | ZECAR");
     expect(resolveLocalizedTitle("/about/", "en")).toBe("About | ZECAR");
     expect(resolveLocalizedTitle("/contact", "ka")).toBe("კონტაქტი | ZECAR");
-    expect(resolveLocalizedTitle("/cars/2024-porsche-911-carrera", "ru")).toBe("2024 Porsche 911 Carrera | ZECAR");
+    expect(resolveLocalizedTitle("/cars/chevrolet-trailblazer-rs", "ru")).toBe("Chevrolet Trailblazer RS | ZECAR");
     expect(resolveLocalizedTitle("/missing-page", "en")).toBe("Page not found | ZECAR");
   });
 
@@ -58,7 +58,7 @@ describe("localization contract", () => {
     const vehicle = vehicles[1];
     for (const locale of locales) {
       const message = buildInquiryMessage(vehicle, locale);
-      expect(message).toContain(`${vehicle.year} ${vehicle.make} ${vehicle.model}`);
+      expect(message).toContain(`${vehicle.make} ${vehicle.model}`);
       expect(message).toContain(`/cars/${vehicle.slug}`);
       expect(message).toContain(dictionaries[locale].inquiry.availableQuestion);
       expect(decodeURIComponent(buildWhatsAppUrl(vehicle, locale))).toContain(message);
@@ -79,7 +79,7 @@ describe("localization contract", () => {
     } as const;
     for (const locale of locales) for (const [group, groupValues] of Object.entries(values)) {
       const translations = dictionaries[locale].enums[group as keyof typeof values] as Record<string, string>;
-      for (const value of groupValues) expect(translations[value], `${locale}.${group}.${value}`).toBeTruthy();
+      for (const value of groupValues.filter((value): value is NonNullable<typeof value> => value !== null)) expect(translations[value], `${locale}.${group}.${value}`).toBeTruthy();
     }
   });
 });

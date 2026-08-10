@@ -1,5 +1,6 @@
 import { vehicles } from "@/data/vehicles";
 import { dictionaries, type Locale } from "@/lib/i18n";
+import { getVehicleTitle } from "@/lib/vehicles";
 
 type StaticPage = Exclude<keyof (typeof dictionaries)[Locale]["pageTitles"], "notFound">;
 
@@ -19,7 +20,7 @@ export function resolveLocalizedTitle(pathname: string, locale: Locale): string 
   }
 
   const vehicle = vehicles.find(({ slug }) => normalizedPath === `/cars/${slug}`);
-  if (vehicle) return `${vehicle.year} ${vehicle.make} ${vehicle.model} | ZECAR`;
+  if (vehicle) return `${getVehicleTitle(vehicle)} | ZECAR`;
 
   return `${dictionaries[locale].pageTitles.notFound} | ZECAR`;
 }

@@ -7,6 +7,7 @@ import {
   buildMailtoUrl,
   buildWhatsAppUrl,
 } from "@/lib/inquiry";
+import { resolveLocalizedTitle } from "@/lib/page-title";
 
 describe("exact-vehicle inquiry helpers", () => {
   const vehicle = vehicles[0];
@@ -14,8 +15,18 @@ describe("exact-vehicle inquiry helpers", () => {
   it("names the exact vehicle and listing URL in its inquiry message", () => {
     const message = buildInquiryMessage(vehicle);
 
-    expect(message).toContain(`${vehicle.year} ${vehicle.make} ${vehicle.model}`);
+    expect(message).toContain(`${vehicle.make} ${vehicle.model}`);
     expect(message).toContain(`/cars/${vehicle.slug}`);
+  });
+
+  it("identifies a pending-details vehicle without adding a missing year", () => {
+    const message = buildInquiryMessage(vehicle);
+    expect(message).toContain(`${vehicle.make} ${vehicle.model}`);
+    expect(message).not.toContain("null");
+    expect(message).not.toContain("undefined");
+    expect(resolveLocalizedTitle(`/cars/${vehicle.slug}`, "en")).toBe(
+      `${vehicle.make} ${vehicle.model} | ZECAR`,
+    );
   });
 
   it("creates an encoded WhatsApp URL for the configured dealership number", () => {

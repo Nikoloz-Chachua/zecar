@@ -1,12 +1,13 @@
 import { dealership } from "@/data/dealership";
 import { DEFAULT_LOCALE, dictionaries, type Locale } from "@/lib/i18n";
 import type { Vehicle } from "@/types/vehicle";
+import { getVehicleTitle } from "@/lib/vehicles";
 
 type InquiryDetails = { name?: string; email?: string; phone?: string; message?: string };
 
 export function buildInquiryMessage(vehicle: Vehicle, locale: Locale = DEFAULT_LOCALE) {
   const t = dictionaries[locale].inquiry;
-  return `${t.greeting} ${vehicle.year} ${vehicle.make} ${vehicle.model}. ${t.listing}: ${dealership.siteUrl}/cars/${vehicle.slug}. ${t.availableQuestion}`;
+  return `${t.greeting} ${getVehicleTitle(vehicle)}. ${t.listing}: ${dealership.siteUrl}/cars/${vehicle.slug}. ${t.availableQuestion}`;
 }
 
 export function buildWhatsAppUrl(vehicle: Vehicle, locale: Locale = DEFAULT_LOCALE) {
@@ -16,13 +17,13 @@ export function buildWhatsAppUrl(vehicle: Vehicle, locale: Locale = DEFAULT_LOCA
 export function buildMailtoUrl(vehicle?: Vehicle, details: InquiryDetails = {}, locale: Locale = DEFAULT_LOCALE) {
   const t = dictionaries[locale].inquiry;
   const subject = vehicle
-    ? `${t.subjectVehicle}: ${vehicle.year} ${vehicle.make} ${vehicle.model}`
+    ? `${t.subjectVehicle}: ${getVehicleTitle(vehicle)}`
     : t.subjectShowroom;
   const lines = [
     details.name && `${t.name}: ${details.name}`,
     details.email && `${t.email}: ${details.email}`,
     details.phone && `${t.phone}: ${details.phone}`,
-    vehicle && `${t.vehicle}: ${vehicle.year} ${vehicle.make} ${vehicle.model}`,
+    vehicle && `${t.vehicle}: ${getVehicleTitle(vehicle)}`,
     vehicle && `${t.listing}: ${dealership.siteUrl}/cars/${vehicle.slug}`,
     details.message && `${t.message}: ${details.message}`,
   ].filter(Boolean);

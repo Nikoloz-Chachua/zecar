@@ -164,6 +164,26 @@ summary:focus-visible {
   align-items: center;
   justify-content: space-between;
 }
+.brand-link,
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+}
+.brand-link {
+  text-decoration: none;
+}
+.brand-lockup {
+  gap: 8px;
+}
+.brand-lockup > img {
+  width: 24px;
+  height: 38px;
+  object-fit: contain;
+}
+.brand-lockup.light > img {
+  background: white;
+  border-radius: 2px;
+}
 .brand {
   font-weight: 800;
   font-size: 20px;
@@ -314,7 +334,7 @@ summary:focus-visible {
 }
 .hero > img {
   object-fit: cover;
-  object-position: center 56%;
+  object-position: 57% center;
 }
 .hero-shade {
   position: absolute;
@@ -922,7 +942,7 @@ summary:focus-visible {
   overflow: hidden;
 }
 .gallery-main img {
-  object-fit: cover;
+  object-fit: contain;
 }
 .expand-gallery {
   position: absolute;

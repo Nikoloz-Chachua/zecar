@@ -21,11 +21,11 @@ The development server is available at `http://localhost:3000`. Run `npm run bui
 
 Brand and showroom details live in `src/data/dealership.ts`. Replace the placeholder phone, WhatsApp number, email, address, hours, and `siteUrl` there before launch. The same values feed the header, footer, contact page, inquiry links, metadata, sitemap, and AutoDealer structured data.
 
-All inventory lives in `src/data/vehicles.ts` and follows the typed model in `src/types/vehicle.ts`. Replace the six sample objects there; do not add individual vehicles inside page or card components. Keep slugs unique, use ISO `YYYY-MM-DD` dates, and provide meaningful images for every listing.
+All inventory lives in `src/data/vehicles.ts` and follows the typed model in `src/types/vehicle.ts`. The first four supplied listings remain replaceable/demo content until the owner provides exact facts. Update their `year`, `price`, `mileage`, `fuelType`, `transmission`, `engine`, `drivetrain`, and `interiorColor` in `src/data/vehicles.ts`; update localized descriptions and equipment in `src/lib/i18n.ts`. Do not infer these values from photos. Keep slugs unique and use ISO `YYYY-MM-DD` dates.
 
 ## Images
 
-Sample photography is loaded from `images.unsplash.com` through a restricted Next Image `remotePatterns` rule in `next.config.ts`. For production, replace each sample URL with imagery you are licensed to use and adjust that allowlist if the image hostname changes. Cards and galleries provide fixed aspect ratios and neutral loading/failure backgrounds, but a production CMS should validate image availability during publishing.
+The supplied galleries for zec-001 through zec-004 are local under `public/vehicles/` and use root-relative URLs. The supplied brand mark is `public/brand/zecar-mark.png`; app icons are `src/app/icon.png` and `src/app/apple-icon.png`. The two untouched demo listings still use `images.unsplash.com` through the restricted Next Image `remotePatterns` rule in `next.config.ts`. Cards and galleries provide fixed aspect ratios and neutral loading/failure backgrounds, but a production CMS should validate image availability during publishing.
 
 ## Inquiry behavior
 
