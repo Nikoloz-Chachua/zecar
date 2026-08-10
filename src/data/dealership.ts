@@ -4,9 +4,9 @@ export const dealership = {
   tagline: "Considered cars. Clearly presented.",
   description:
     "A modern independent showroom for carefully presented pre-owned vehicles.",
-  phone: "+1 (555) 014-2280",
-  phoneHref: "+15550142280",
-  whatsapp: "+15550142280",
+  phone: "+995 577 09 84 82",
+  phoneHref: "+995577098482",
+  whatsapp: "995577098482",
   email: "hello@zecar.example",
   address: "100 Motor Row, Your City",
   hours: ["Mon–Fri · 09:00–18:00", "Saturday · 10:00–16:00", "Sunday · By appointment"],
