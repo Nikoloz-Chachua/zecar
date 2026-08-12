@@ -17,7 +17,7 @@ export interface Vehicle {
   drivetrain: "FWD" | "RWD" | "AWD" | null;
   exteriorColor: string;
   interiorColor: string | null;
-  condition: "Pre-owned";
+  condition: "Pre-owned" | null;
   description: string;
   features: string[];
   coverImage: string;

@@ -19,6 +19,13 @@ describe("exact-vehicle inquiry helpers", () => {
     expect(message).toContain(`/cars/${vehicle.slug}`);
   });
 
+  it("uses the Hyundai title without an invented year in inquiries and page titles", () => {
+    const santaFe = vehicles.find(({ slug }) => slug === "hyundai-santa-fe-2-0t")!;
+    expect(buildInquiryMessage(santaFe)).toContain("Hyundai Santa Fe 2.0T");
+    expect(buildInquiryMessage(santaFe)).not.toMatch(/2019|2020|null|undefined/);
+    expect(resolveLocalizedTitle(`/cars/${santaFe.slug}`, "en")).toBe("Hyundai Santa Fe 2.0T | ZECAR");
+  });
+
   it("identifies a pending-details vehicle without adding a missing year", () => {
     const message = buildInquiryMessage(vehicle);
     expect(message).toContain(`${vehicle.make} ${vehicle.model}`);

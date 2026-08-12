@@ -42,10 +42,10 @@ describe("localization contract", () => {
     for (const locale of locales) expect(keys(dictionaries[locale]).sort()).toEqual(expected);
   });
 
-  it("localizes descriptions and every feature for only the four supplied vehicles", () => {
-    expect(vehicles).toHaveLength(4);
+  it("localizes descriptions and every feature for all five supplied vehicles", () => {
+    expect(vehicles).toHaveLength(5);
     for (const locale of locales) {
-      expect(Object.keys(localizedVehicles[locale]).sort()).toEqual(["zec-001", "zec-002", "zec-003", "zec-004"]);
+      expect(Object.keys(localizedVehicles[locale]).sort()).toEqual(["zec-001", "zec-002", "zec-003", "zec-004", "zec-005"]);
       for (const vehicle of vehicles) {
         const content = localizedVehicles[locale][vehicle.id];
         expect(content?.description.length).toBeGreaterThan(20);

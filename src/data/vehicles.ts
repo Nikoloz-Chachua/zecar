@@ -46,4 +46,15 @@ export const vehicles: Vehicle[] = [
     coverImage: "/vehicles/kia-soul/cover.webp",
     galleryImages: ["/vehicles/kia-soul/cover.webp", "/vehicles/kia-soul/front.webp", "/vehicles/kia-soul/rear.webp"],
   },
+  {
+    id: "zec-005", slug: "hyundai-santa-fe-2-0t", make: "Hyundai", model: "Santa Fe 2.0T", year: null,
+    price: null, currency: "USD", mileage: null, fuelType: null, transmission: null,
+    engine: null, bodyType: "SUV", drivetrain: null, exteriorColor: "Black",
+    interiorColor: null, condition: null, availabilityStatus: "Available", featured: false,
+    createdDate: "2026-08-12", location: "ZECAR Main Showroom",
+    description: "A black Hyundai Santa Fe 2.0T SUV, presented through a four-image exterior gallery. Contact ZECAR to confirm year, mileage, price, specifications, condition, and equipment.",
+    features: [],
+    coverImage: "/vehicles/hyundai-santa-fe/cover.webp",
+    galleryImages: ["/vehicles/hyundai-santa-fe/cover.webp", "/vehicles/hyundai-santa-fe/front.webp", "/vehicles/hyundai-santa-fe/rear-three-quarter.webp", "/vehicles/hyundai-santa-fe/rear.webp"],
+  },
 ];
