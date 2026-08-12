@@ -32,12 +32,12 @@ describe("vehicle inventory helpers", () => {
       id: "zec-005", make: "Hyundai", model: "Santa Fe 2.0T", slug: "hyundai-santa-fe-2-0t",
       bodyType: "SUV", exteriorColor: "Black",
     });
-    expect(santaFe?.coverImage).toBe("/vehicles/hyundai-santa-fe/cover.webp");
+    expect(santaFe?.coverImage).toBe("/vehicles/hyundai-santa-fe/front.webp");
     expect(santaFe?.galleryImages).toEqual([
-      "/vehicles/hyundai-santa-fe/cover.webp",
       "/vehicles/hyundai-santa-fe/front.webp",
-      "/vehicles/hyundai-santa-fe/rear-three-quarter.webp",
+      "/vehicles/hyundai-santa-fe/cover.webp",
       "/vehicles/hyundai-santa-fe/rear.webp",
+      "/vehicles/hyundai-santa-fe/rear-three-quarter.webp",
     ]);
   });
 

@@ -54,7 +54,7 @@ export const vehicles: Vehicle[] = [
     createdDate: "2026-08-12", location: "ZECAR Main Showroom",
     description: "A black Hyundai Santa Fe 2.0T SUV, presented through a four-image exterior gallery. Contact ZECAR to confirm year, mileage, price, specifications, condition, and equipment.",
     features: [],
-    coverImage: "/vehicles/hyundai-santa-fe/cover.webp",
-    galleryImages: ["/vehicles/hyundai-santa-fe/cover.webp", "/vehicles/hyundai-santa-fe/front.webp", "/vehicles/hyundai-santa-fe/rear-three-quarter.webp", "/vehicles/hyundai-santa-fe/rear.webp"],
+    coverImage: "/vehicles/hyundai-santa-fe/front.webp",
+    galleryImages: ["/vehicles/hyundai-santa-fe/front.webp", "/vehicles/hyundai-santa-fe/cover.webp", "/vehicles/hyundai-santa-fe/rear.webp", "/vehicles/hyundai-santa-fe/rear-three-quarter.webp"],
   },
 ];
