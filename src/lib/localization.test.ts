@@ -70,9 +70,9 @@ describe("localization contract", () => {
   });
 
   it("localizes the supplied Lexus facts without adding unknown details", () => {
-    expect(localizedVehicles.en["zec-002"]).toMatchObject({ engine: "2.0L", features: ["2.0L engine", "Front-wheel drive"] });
-    expect(localizedVehicles.ka["zec-002"]).toMatchObject({ engine: "2.0L", features: ["2.0L ძრავა", "წინა წამყვანი თვლები"] });
-    expect(localizedVehicles.ru["zec-002"]).toMatchObject({ engine: "2.0L", features: ["Двигатель 2.0L", "Передний привод"] });
+    expect(localizedVehicles.en["zec-002"]).toMatchObject({ description: "A silver 2016 Lexus NX 200 F Sport with a 2.0L engine, 80,000 miles, and front-wheel drive.", engine: "2.0L", features: ["2.0L engine", "80,000 miles", "Front-wheel drive"] });
+    expect(localizedVehicles.ka["zec-002"]).toMatchObject({ description: "ვერცხლისფერი 2016 წლის Lexus NX 200 F Sport, 2.0L ძრავით, 80,000 მილის გარბენითა და წინა წამყვანი თვლებით.", engine: "2.0L", features: ["2.0L ძრავა", "80,000 მილი", "წინა წამყვანი თვლები"] });
+    expect(localizedVehicles.ru["zec-002"]).toMatchObject({ description: "Серебристый Lexus NX 200 F Sport 2016 года с двигателем 2.0L, пробегом 80 000 миль и передним приводом.", engine: "2.0L", features: ["Двигатель 2.0L", "80 000 миль", "Передний привод"] });
   });
 
   it("covers every canonical enum/spec/status value", () => {

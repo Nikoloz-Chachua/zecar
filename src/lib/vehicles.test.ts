@@ -61,8 +61,8 @@ describe("vehicle inventory helpers", () => {
     expect(getVehicleBySlug("lexus-nx-200t")).toMatchObject({
       make: "Lexus", model: "NX 200 F Sport", year: 2016, vin: "JTJYARBZ5H2058196",
       engine: "2.0L", drivetrain: "FWD", price: 15500, currency: "USD", exteriorColor: "Silver",
-      mileage: null, fuelType: null, transmission: null, condition: null, interiorColor: null,
-      features: ["2.0L engine", "Front-wheel drive"],
+      mileage: 80000, fuelType: null, transmission: null, condition: null, interiorColor: null,
+      features: ["2.0L engine", "80,000 miles", "Front-wheel drive"],
     });
   });
 
