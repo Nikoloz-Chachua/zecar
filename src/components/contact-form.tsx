@@ -11,7 +11,8 @@ export function ContactForm({ vehicle }: { vehicle?: Vehicle }) {
   const [note, setNote] = useState(false);
   const { locale, dictionary: t } = useLocale();
   return <form className="contact-form" onSubmit={(event) => {
-    event.preventDefault(); const data = new FormData(event.currentTarget);
+    event.preventDefault(); if(!event.currentTarget.checkValidity()){event.currentTarget.reportValidity();return} const data = new FormData(event.currentTarget);
+    document.dispatchEvent(new CustomEvent("zecar:inquiry-submitted"));
     window.location.href = buildMailtoUrl(vehicle, { name: String(data.get("name")), email: String(data.get("email")), phone: String(data.get("phone")), message: String(data.get("message")) }, locale); setNote(true);
   }}>
     <div className="form-row"><label><span>{t.form.name}</span><input name="name" autoComplete="name" required /></label><label><span>{t.form.email}</span><input name="email" type="email" autoComplete="email" required /></label></div>

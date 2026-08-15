@@ -1,0 +1,3 @@
+"use client";
+import { useActionState } from "react"; import { login, type LoginState } from "@/app/(admin)/admin/actions";
+export function LoginForm(){const[state,action,pending]=useActionState(login,{} as LoginState);return <form action={action} className="admin-login-form"><div><label htmlFor="email">Email address</label><input id="email" name="email" type="email" autoComplete="username" required disabled={pending}/></div><div><label htmlFor="password">Password</label><input id="password" name="password" type="password" autoComplete="current-password" required disabled={pending}/></div>{state.error&&<p className="admin-alert" role="alert">{state.error}</p>}<button className="admin-primary" disabled={pending}>{pending?"Signing in…":"Sign in securely"}</button></form>}

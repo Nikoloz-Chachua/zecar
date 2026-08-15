@@ -1,0 +1,2 @@
+import "server-only"; import { createServerClient } from "@supabase/ssr"; import { cookies } from "next/headers"; import { hardenCookieOptions,supabaseConfig } from "./config";
+export async function createSupabaseServerClient(){const config=supabaseConfig();if(!config.configured)return null;const store=await cookies();return createServerClient(config.url,config.anonKey,{cookies:{getAll:()=>store.getAll(),setAll(values){try{values.forEach(({name,value,options})=>store.set(name,value,hardenCookieOptions(options)))}catch{}}}})}
