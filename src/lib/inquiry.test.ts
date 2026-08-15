@@ -58,7 +58,7 @@ describe("exact-vehicle inquiry helpers", () => {
       message: "Please confirm availability.",
     });
 
-    expect(url).toMatch(/^mailto:/);
+    expect(url).toMatch(/^mailto:nikoloz\.chachua10@gmail\.com\?/);
     expect(decodeURIComponent(url)).toContain(vehicle.slug);
     expect(decodeURIComponent(url)).toContain("Alex Morgan");
     expect(decodeURIComponent(url)).toContain("Please confirm availability.");

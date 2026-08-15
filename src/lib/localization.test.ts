@@ -42,6 +42,17 @@ describe("localization contract", () => {
     for (const locale of locales) expect(keys(dictionaries[locale]).sort()).toEqual(expected);
   });
 
+  it("provides localized BENDS credits without operating-hours content", () => {
+    expect(dictionaries.en.footer.credit).toBe("Website fully built and operated by BENDS.");
+    expect(dictionaries.ka.footer.credit).toBe("ვებსაიტი სრულად შექმნილია და იმართება BENDS-ის მიერ.");
+    expect(dictionaries.ru.footer.credit).toBe("Веб-сайт полностью создан и управляется BENDS.");
+    for (const locale of locales) {
+      expect(dictionaries[locale].footer).not.toHaveProperty("hours");
+      expect(dictionaries[locale].dealership).not.toHaveProperty("hours");
+      expect(dictionaries[locale].contact).not.toHaveProperty("hours");
+    }
+  });
+
   it("localizes descriptions and every feature for all five supplied vehicles", () => {
     expect(vehicles).toHaveLength(5);
     for (const locale of locales) {

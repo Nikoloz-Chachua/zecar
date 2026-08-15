@@ -7,9 +7,9 @@ export const dealership = {
   phone: "+995 577 09 84 82",
   phoneHref: "+995577098482",
   whatsapp: "995577098482",
-  email: "hello@zecar.example",
+  email: "nikoloz.chachua10@gmail.com",
   address: "100 Motor Row, Your City",
-  hours: ["Mon–Fri · 09:00–18:00", "Saturday · 10:00–16:00", "Sunday · By appointment"],
+  websiteCreditUrl: "https://bends-digital-studio.vercel.app",
   siteUrl: "https://zecar.example",
 } as const;
 

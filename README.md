@@ -19,7 +19,7 @@ The development server is available at `http://localhost:3000`. Run `npm run bui
 
 ## Content replacement
 
-Brand and showroom details live in `src/data/dealership.ts`. Replace the placeholder phone, WhatsApp number, email, address, hours, and `siteUrl` there before launch. The same values feed the header, footer, contact page, inquiry links, metadata, sitemap, and AutoDealer structured data.
+Brand and showroom details live in `src/data/dealership.ts`. Replace the placeholder phone, WhatsApp number, address, and `siteUrl` there before launch. The same values feed the header, footer, contact page, inquiry links, metadata, sitemap, and AutoDealer structured data.
 
 All inventory lives in `src/data/vehicles.ts` and follows the typed model in `src/types/vehicle.ts`. The first four supplied listings remain replaceable/demo content until the owner provides exact facts. Update their `year`, `price`, `mileage`, `fuelType`, `transmission`, `engine`, `drivetrain`, and `interiorColor` in `src/data/vehicles.ts`; update localized descriptions and equipment in `src/lib/i18n.ts`. Do not infer these values from photos. Keep slugs unique and use ISO `YYYY-MM-DD` dates.
 

@@ -289,7 +289,7 @@ summary:focus-visible {
 }
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1.4fr 1.4fr;
+  grid-template-columns: 2fr 1fr 1.4fr;
   gap: 70px;
 }
 .footer-grid > div {
@@ -328,6 +328,14 @@ summary:focus-visible {
   font-size: 11px;
   color: #777;
   margin: 0;
+}
+.footer-credit {
+  margin-top: 16px;
+  text-align: right;
+}
+.footer-credit a {
+  color: #777;
+  font-size: 11px;
 }
 .hero {
   height: calc(100svh - 68px);
