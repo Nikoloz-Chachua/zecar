@@ -69,6 +69,12 @@ describe("localization contract", () => {
     }
   });
 
+  it("localizes the supplied Lexus facts without adding unknown details", () => {
+    expect(localizedVehicles.en["zec-002"]).toMatchObject({ engine: "2.0L", features: ["2.0L engine", "Front-wheel drive"] });
+    expect(localizedVehicles.ka["zec-002"]).toMatchObject({ engine: "2.0L", features: ["2.0L ძრავა", "წინა წამყვანი თვლები"] });
+    expect(localizedVehicles.ru["zec-002"]).toMatchObject({ engine: "2.0L", features: ["Двигатель 2.0L", "Передний привод"] });
+  });
+
   it("covers every canonical enum/spec/status value", () => {
     const values = {
       fuel: [...new Set(vehicles.map((v) => v.fuelType))],

@@ -58,16 +58,21 @@ describe("vehicle inventory helpers", () => {
       year: 2018, engine: "2.0L turbo", vin: "5NMS53AA5KH021531", price: 11000,
       currency: "USD", mileage: null, drivetrain: null, fuelType: null, transmission: null,
     });
+    expect(getVehicleBySlug("lexus-nx-200t")).toMatchObject({
+      make: "Lexus", model: "NX 200 F Sport", year: 2016, vin: "JTJYARBZ5H2058196",
+      engine: "2.0L", drivetrain: "FWD", price: 15500, currency: "USD", exteriorColor: "Silver",
+      mileage: null, fuelType: null, transmission: null, condition: null, interiorColor: null,
+      features: ["2.0L engine", "Front-wheel drive"],
+    });
   });
 
-  it("defines a VIN field on every listing and leaves the unchanged Lexus VIN unknown", () => {
+  it("defines a VIN field on every listing", () => {
     expect(vehicles.every((vehicle) => Object.hasOwn(vehicle, "vin"))).toBe(true);
-    expect(getVehicleBySlug("lexus-nx-200t")?.vin).toBeNull();
   });
   it("maps the supplied catalogue to the correct identities and clean slugs", () => {
     expect(vehicles.slice(0, 4).map(({ id, make, model, slug }) => ({ id, make, model, slug }))).toEqual([
       { id: "zec-001", make: "Chevrolet", model: "Trailblazer RS", slug: "chevrolet-trailblazer-rs" },
-      { id: "zec-002", make: "Lexus", model: "NX 200t", slug: "lexus-nx-200t" },
+      { id: "zec-002", make: "Lexus", model: "NX 200 F Sport", slug: "lexus-nx-200t" },
       { id: "zec-003", make: "Nissan", model: "Kicks SR", slug: "nissan-kicks-sr" },
       { id: "zec-004", make: "Kia", model: "Soul", slug: "kia-soul" },
     ]);
@@ -84,7 +89,16 @@ describe("vehicle inventory helpers", () => {
   });
 
   it("keeps pending values out of active filters and after known values when sorting", () => {
-    const pending = vehicles[1];
+    const pending: Vehicle = {
+      ...vehicles[1],
+      id: "fixture-pending",
+      slug: "fixture-pending",
+      year: null,
+      price: null,
+      mileage: null,
+      fuelType: null,
+      transmission: null,
+    };
     expect(pending.year).toBeNull();
     expect(pending.price).toBeNull();
     expect(pending.mileage).toBeNull();

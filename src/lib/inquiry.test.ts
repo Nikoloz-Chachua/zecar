@@ -27,6 +27,12 @@ describe("exact-vehicle inquiry helpers", () => {
     expect(resolveLocalizedTitle(`/cars/${santaFe.slug}`, "en")).toBe("2018 Hyundai Santa Fe 2.0T | ZECAR");
   });
 
+  it("uses the updated Lexus model and year in inquiries and page titles", () => {
+    const lexus = vehicles.find(({ slug }) => slug === "lexus-nx-200t")!;
+    expect(buildInquiryMessage(lexus)).toContain("2016 Lexus NX 200 F Sport");
+    expect(resolveLocalizedTitle(`/cars/${lexus.slug}`, "en")).toBe("2016 Lexus NX 200 F Sport | ZECAR");
+  });
+
   it("identifies a vehicle with its supplied year", () => {
     const message = buildInquiryMessage(vehicle);
     expect(message).toContain(`${vehicle.make} ${vehicle.model}`);
