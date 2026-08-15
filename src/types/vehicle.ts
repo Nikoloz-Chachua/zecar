@@ -6,6 +6,7 @@ export interface Vehicle {
   slug: string;
   make: string;
   model: string;
+  vin: string | null;
   year: number | null;
   price: number | null;
   currency: Currency;

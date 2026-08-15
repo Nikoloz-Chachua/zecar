@@ -41,17 +41,28 @@ describe("vehicle inventory helpers", () => {
     ]);
   });
 
-  it("keeps every unverified Hyundai fact unknown", () => {
-    const santaFe = getVehicleBySlug("hyundai-santa-fe-2-0t")!;
-    expect(santaFe).toBeDefined();
-    expect({
-      year: santaFe.year, price: santaFe.price, mileage: santaFe.mileage,
-      fuelType: santaFe.fuelType, transmission: santaFe.transmission,
-      drivetrain: santaFe.drivetrain, condition: santaFe.condition,
-    }).toEqual({ year: null, price: null, mileage: null, fuelType: null, transmission: null, drivetrain: null, condition: null });
-    expect(santaFe.engine).toBeNull();
-    expect(santaFe.interiorColor).toBeNull();
-    expect(santaFe.features).toEqual([]);
+  it("publishes the exact supplied facts without filling unknown specifications", () => {
+    expect(getVehicleBySlug("chevrolet-trailblazer-rs")).toMatchObject({
+      year: 2021, engine: "1.3L", mileage: 88000, drivetrain: "FWD", vin: "KL79MTSL4NB067035",
+      price: 9800, currency: "USD", fuelType: null, transmission: null,
+    });
+    expect(getVehicleBySlug("nissan-kicks-sr")).toMatchObject({
+      year: 2023, engine: "1.6L", mileage: 27000, vin: "3N1CP5DV7PL560612",
+      price: 11700, currency: "USD", drivetrain: null, fuelType: null, transmission: null,
+    });
+    expect(getVehicleBySlug("kia-soul")).toMatchObject({
+      year: 2022, engine: "2.0L", mileage: 63000, vin: "KNDJ23AU9N7838219",
+      price: 9000, currency: "USD", drivetrain: null, fuelType: null, transmission: null,
+    });
+    expect(getVehicleBySlug("hyundai-santa-fe-2-0t")).toMatchObject({
+      year: 2018, engine: "2.0L turbo", vin: "5NMS53AA5KH021531", price: 11000,
+      currency: "USD", mileage: null, drivetrain: null, fuelType: null, transmission: null,
+    });
+  });
+
+  it("defines a VIN field on every listing and leaves the unchanged Lexus VIN unknown", () => {
+    expect(vehicles.every((vehicle) => Object.hasOwn(vehicle, "vin"))).toBe(true);
+    expect(getVehicleBySlug("lexus-nx-200t")?.vin).toBeNull();
   });
   it("maps the supplied catalogue to the correct identities and clean slugs", () => {
     expect(vehicles.slice(0, 4).map(({ id, make, model, slug }) => ({ id, make, model, slug }))).toEqual([
@@ -73,7 +84,7 @@ describe("vehicle inventory helpers", () => {
   });
 
   it("keeps pending values out of active filters and after known values when sorting", () => {
-    const pending = vehicles[0];
+    const pending = vehicles[1];
     expect(pending.year).toBeNull();
     expect(pending.price).toBeNull();
     expect(pending.mileage).toBeNull();

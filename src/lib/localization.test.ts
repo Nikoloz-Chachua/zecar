@@ -25,7 +25,7 @@ describe("localization contract", () => {
     expect(resolveLocalizedTitle("/cars", "ru")).toBe("Автомобили | ZECAR");
     expect(resolveLocalizedTitle("/about/", "en")).toBe("About | ZECAR");
     expect(resolveLocalizedTitle("/contact", "ka")).toBe("კონტაქტი | ZECAR");
-    expect(resolveLocalizedTitle("/cars/chevrolet-trailblazer-rs", "ru")).toBe("Chevrolet Trailblazer RS | ZECAR");
+    expect(resolveLocalizedTitle("/cars/chevrolet-trailblazer-rs", "ru")).toBe("2021 Chevrolet Trailblazer RS | ZECAR");
     expect(resolveLocalizedTitle("/missing-page", "en")).toBe("Page not found | ZECAR");
   });
 

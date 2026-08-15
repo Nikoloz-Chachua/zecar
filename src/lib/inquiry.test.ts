@@ -19,20 +19,21 @@ describe("exact-vehicle inquiry helpers", () => {
     expect(message).toContain(`/cars/${vehicle.slug}`);
   });
 
-  it("uses the Hyundai title without an invented year in inquiries and page titles", () => {
+  it("uses the supplied Hyundai year in inquiries and page titles", () => {
     const santaFe = vehicles.find(({ slug }) => slug === "hyundai-santa-fe-2-0t")!;
     expect(buildInquiryMessage(santaFe)).toContain("Hyundai Santa Fe 2.0T");
-    expect(buildInquiryMessage(santaFe)).not.toMatch(/2019|2020|null|undefined/);
-    expect(resolveLocalizedTitle(`/cars/${santaFe.slug}`, "en")).toBe("Hyundai Santa Fe 2.0T | ZECAR");
+    expect(buildInquiryMessage(santaFe)).toContain("2018 Hyundai Santa Fe 2.0T");
+    expect(buildInquiryMessage(santaFe)).not.toMatch(/null|undefined/);
+    expect(resolveLocalizedTitle(`/cars/${santaFe.slug}`, "en")).toBe("2018 Hyundai Santa Fe 2.0T | ZECAR");
   });
 
-  it("identifies a pending-details vehicle without adding a missing year", () => {
+  it("identifies a vehicle with its supplied year", () => {
     const message = buildInquiryMessage(vehicle);
     expect(message).toContain(`${vehicle.make} ${vehicle.model}`);
     expect(message).not.toContain("null");
     expect(message).not.toContain("undefined");
     expect(resolveLocalizedTitle(`/cars/${vehicle.slug}`, "en")).toBe(
-      `${vehicle.make} ${vehicle.model} | ZECAR`,
+      `${vehicle.year} ${vehicle.make} ${vehicle.model} | ZECAR`,
     );
   });
 
