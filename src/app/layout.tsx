@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(dealership.siteUrl),
   title: { default: `${dealership.name} — პრემიუმ მეორადი ავტომობილები`, template: `%s | ${dealership.name}` },
   description: dictionaries.ka.dealership.description,
+  verification: { google: "e17LNbRKWUyrWSbiP2zxttA2NonuDIc9FaZoaeSEJKY" },
   alternates: { canonical: "/" },
   openGraph: { type: "website", siteName: dealership.name, title: dictionaries.ka.dealership.tagline, description: dictionaries.ka.dealership.description },
 };
