@@ -16,9 +16,9 @@ import {
 } from "@/lib/vehicles";
 
 describe("vehicle inventory helpers", () => {
-  it("contains the five supplied local listings", () => {
-    expect(vehicles.map((vehicle) => vehicle.id)).toEqual(["zec-001", "zec-002", "zec-003", "zec-004", "zec-005"]);
-    expect(vehicles).toHaveLength(5);
+  it("contains the seven supplied local listings", () => {
+    expect(vehicles.map((vehicle) => vehicle.id)).toEqual(["zec-001", "zec-002", "zec-003", "zec-004", "zec-005", "zec-006", "zec-007"]);
+    expect(vehicles).toHaveLength(7);
     expect(vehicles.some((vehicle) => ["Audi", "Land Rover"].includes(vehicle.make))).toBe(false);
     expect(vehicles.some((vehicle) => ["e-tron GT", "Defender 110"].includes(vehicle.model))).toBe(false);
     expect(getVehicleBySlug("2023-audi-e-tron-gt")).toBeUndefined();
@@ -68,6 +68,18 @@ describe("vehicle inventory helpers", () => {
 
   it("defines a VIN field on every listing", () => {
     expect(vehicles.every((vehicle) => Object.hasOwn(vehicle, "vin"))).toBe(true);
+  });
+  it("publishes the two new Hyundai listings without inventing unknown facts", () => {
+    expect(getVehicleBySlug("hyundai-kona")).toMatchObject({
+      id: "zec-006", make: "Hyundai", model: "Kona", bodyType: "SUV", exteriorColor: "Dark gray",
+      vin: null, year: null, price: null, mileage: null, engine: null, drivetrain: null,
+      fuelType: null, transmission: null, features: [],
+    });
+    expect(getVehicleBySlug("hyundai-elantra")).toMatchObject({
+      id: "zec-007", make: "Hyundai", model: "Elantra", bodyType: "Sedan", exteriorColor: "White",
+      vin: null, year: null, price: null, mileage: null, engine: null, drivetrain: null,
+      fuelType: null, transmission: null, features: [],
+    });
   });
   it("maps the supplied catalogue to the correct identities and clean slugs", () => {
     expect(vehicles.slice(0, 4).map(({ id, make, model, slug }) => ({ id, make, model, slug }))).toEqual([
@@ -162,7 +174,7 @@ describe("vehicle inventory helpers", () => {
     expect(sortVehicles(fixture, "price-desc")[0].id).toBe("fixture-high");
     expect(sortVehicles(fixture, "year-newest")[0].year).toBe(2023);
     expect(sortVehicles(fixture, "mileage-lowest")[0].mileage).toBe(10000);
-    expect(sortVehicles(vehicles, "newest")[0].id).toBe("zec-005");
+    expect(sortVehicles(vehicles, "newest")[0].id).toBe("zec-006");
   });
 
   it("formats prices and mileage for display", () => {

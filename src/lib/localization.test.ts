@@ -53,10 +53,10 @@ describe("localization contract", () => {
     }
   });
 
-  it("localizes descriptions and every feature for all five supplied vehicles", () => {
-    expect(vehicles).toHaveLength(5);
+  it("localizes descriptions and every feature for all seven supplied vehicles", () => {
+    expect(vehicles).toHaveLength(7);
     for (const locale of locales) {
-      expect(Object.keys(localizedVehicles[locale]).sort()).toEqual(["zec-001", "zec-002", "zec-003", "zec-004", "zec-005"]);
+      expect(Object.keys(localizedVehicles[locale]).sort()).toEqual(["zec-001", "zec-002", "zec-003", "zec-004", "zec-005", "zec-006", "zec-007"]);
       for (const vehicle of vehicles) {
         const content = localizedVehicles[locale][vehicle.id];
         expect(content?.description.length).toBeGreaterThan(20);
