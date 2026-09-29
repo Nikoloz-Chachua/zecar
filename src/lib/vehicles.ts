@@ -33,7 +33,8 @@ export function sortVehicles(items: Vehicle[], sort: VehicleSort): Vehicle[] {
     "year-newest": (a, b) => nullableNumber((vehicle) => vehicle.year, -1)(a, b) || b.createdDate.localeCompare(a.createdDate),
     "mileage-lowest": nullableNumber((vehicle) => vehicle.mileage, 1),
   };
-  return copy.sort(comparators[sort]);
+  const isSold = (vehicle: Vehicle) => (vehicle.availabilityStatus === "Recently Sold" ? 1 : 0);
+  return copy.sort((a, b) => isSold(a) - isSold(b) || comparators[sort](a, b));
 }
 
 export const formatCurrency = (value: number, currency: Currency) =>
@@ -44,7 +45,7 @@ export const getVehicleBySlug = (slug: string) => vehicles.find((vehicle) => veh
 export const getVehicleTitle = (vehicle: Pick<Vehicle, "year" | "make" | "model">) =>
   [vehicle.year, vehicle.make, vehicle.model].filter((part) => part !== null).join(" ");
 export const getSimilarVehicles = (vehicle: Vehicle, limit = 3) => {
-  const candidates = vehicles.filter((item) => item.id !== vehicle.id);
+  const candidates = vehicles.filter((item) => item.id !== vehicle.id && item.availabilityStatus !== "Recently Sold");
   const closeMatches = candidates.filter(
     (item) => item.bodyType === vehicle.bodyType || item.make === vehicle.make,
   );
